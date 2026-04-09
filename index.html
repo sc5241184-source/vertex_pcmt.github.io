@@ -3,109 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertex PCMT - Your Website</title>
+    <title>Vertex PCMT | 3D Models & Blender Add-ons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .hero {
-            background: #f8fafc;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        footer {
-            background: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--primary:#00d4ff;--secondary:#ff6b6b;--dark:#1a1a2e;--light:#16213e;--accent:#0f3460;}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#0c0c1a 0%,#1a1a2e 50%,#16213e 100%);color:#fff;line-height:1.6;overflow-x:hidden;}
+        
+        /* Navigation */
+        nav{position:fixed;top:0;width:100%;background: rgba(26,26,46,0.95);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;transition:all 0.3s;}
+        nav.scrolled{background: rgba(26,26,46,0.98);}
+        .nav-container{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+        .logo{font-size:1.8rem;font-weight:800;background:linear-gradient(45deg,var(--primary),#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+        .nav-links{display:flex;gap:2rem;list-style:none;}
+        .nav-links a{color:#fff;text-decoration:none;font-weight:500;transition:all 0.3s;}
+        .nav-links a:hover{color:var(--primary);transform:translateY(-2px);}
+        
+        /* Hero */
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 2rem;background:radial-gradient(circle at 20% 80%,rgba(120,119,198,0.3),transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,119,198,0.3),transparent 50%),linear-gradient(135deg,#0c0c1a 0%,#1a1a2e 100%);}
+        .hero-content{max-width:800px;}
+        .hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;margin-bottom:1.5rem;background:linear-gradient(45deg,var(--primary),#fff,#ff6b6b); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+        .hero p{font-size:1.3rem;margin-bottom:3rem;opacity:0.9;}
+        .cta-buttons{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+        .btn{display:inline-block;padding:18px 40px;font-size:1.1rem;font-weight:600;border-radius:50px;text-decoration:none;transition:all 0.4s;cursor:pointer;position:relative;overflow:hidden;}
+        .btn-primary{background:linear-gradient(45deg,var(--primary),#00aaff);color:#fff;box-shadow:0 10px 30px rgba(0,212,255,0.4);}
+        .btn-secondary{background:linear-gradient(45deg,#ff6b6b,#ff5252);color:#fff;box-shadow:0 10px 30px rgba(255,107,107,0.4);}
+        .btn:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 20px 40px rgba(0,0,0,0.4);}
+        .btn:active{transform:translateY(-2px) scale(1.02);}
+        
+        /* Sections */
+        section{padding:100px 0;}
+        .container{max-width:1400px;margin:0 auto;padding:0 2rem;}
+        h2{font-size:clamp(2.5rem,5vw,4rem);text-align:center;margin-bottom:4rem;font-weight:800;background:linear-gradient(45deg,var(--primary),#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+        
+        /* Featured */
+        .featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;}
+        .card{background:linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));backdrop-filter:blur(20px);border-radius:20px;padding:2.5rem;border:1px solid rgba(255,255,255,0.1);transition:all 0.4s;cursor:pointer;position:relative;overflow:hidden;}
+        .card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.6s;}
+        .card:hover{transform:translateY(-15px) scale(1.02);border-color:var(--primary);box-shadow:0 30px 60px rgba(0,212,255,0.3);}
+        .card:hover::before{left:100%;}
+        .card i{font-size:4rem;color:var(--primary);margin-bottom:1rem;display:block;}
+        .card h3{font-size:1.5rem;margin-bottom:1rem;}
+        
+        /* Footer */
+        footer{background:linear-gradient(180deg,#0c0c1a 0%,#1a1a2e 100%);padding:3rem 0 1rem;text-align:center;border-top:1px solid rgba(255,255,255,0.1);}
+        .social-links{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;}
+        .social-links a{width:50px;height:50px;background:linear-gradient(45deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:all 0.3s;}
+        .social-links a:hover{background:var(--primary);transform:translateY(-5px) scale(1.1);}
+        
+        /* Animations */
+        @keyframes float{0%,100%{transform:translateY(0px);}50%{transform:translateY(-10px);}}
+        .hero-content{animation:float 6s ease-in-out infinite;}
+        .card:nth-child(1){animation-delay:0.1s;}
+        .card:nth-child(2){animation-delay:0.2s;}
+        .card:nth-child(3){animation-delay:0.3s;}
+        
+        @media(max-width:768px){.nav-links{display:none;}.cta-buttons{flex-direction:column;align-items:center;}}
     </style>
 </head>
 <body>
-    <header>
-        <h1>🌐 Vertex PCMT</h1>
-        <p>Your Digital Presence</p>
-    </header>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <div class="logo">VERTEX PCMT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#featured">Work</a></li>
+                <li><a href="#youtube">YouTube</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
-        <section class="hero">
-            <h1>Welcome to Vertex PCMT</h1>
-            <p>Professional website powered by GitHub Pages</p>
-            <button style="background: #3b82f6; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer;">
-               <!-- REPLACE your current button with this: -->
-<button id="youtubeBtn" style="background: linear-gradient(45deg, #FF0000, #FF4444, #FF0000); background-size: 200% 200%; color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 1.3rem; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(255,0,0,0.4); text-transform: uppercase; letter-spacing: 1px; position: relative; overflow: hidden;">
-    🎥 Get Started on YouTube
-    <span style="position: absolute; top: 50%; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: translateY(-50%); transition: left 0.5s;"></span>
-</button>
-
-<script>
-document.getElementById('youtubeBtn').addEventListener('click', function() {
-    window.open('https://www.youtube.com/@Vertex_PCMT', '_blank');
-    this.style.transform = 'scale(0.95)';
-    setTimeout(() => this.style.transform = 'scale(1)', 150);
-});
-</script>
-            </button>
-        </section>
-
-        <section class="features">
-            <div class="feature-card">
-                <h3>🎨 Modern Design</h3>
-                <p>Responsive design that looks great on all devices</p>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>3D Models & Blender Add-ons</h1>
+            <p>Professional 3D assets and powerful Blender tools created by Vertex PCMT</p>
+            <div class="cta-buttons">
+                <a href="https://www.youtube.com/@Vertex_PCMT" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-youtube"></i> Watch Tutorials
+                </a>
+                <a href="#featured" class="btn btn-secondary">
+                    <i class="fas fa-cube"></i> View Models
+                </a>
             </div>
-            <div class="feature-card">
-                <h3>⚡ Fast Loading</h3>
-                <p>Optimized for speed with GitHub Pages CDN</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔧 Easy Updates</h3>
-                <p>Edit files on GitHub, see changes instantly</p>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
+    <!-- Featured Work -->
+    <section id="featured">
+        <div class="container">
+            <h2>Featured Creations</h2>
+            <div class="featured">
+                <div class="card" onclick="scrollToSection('#models')">
+                    <i class="fas fa-cube"></i>
+                    <h3>Premium 3D Models</h3>
+                    <p>High-quality, game-ready 3D models for Blender, Unity, Unreal</p>
+                </div>
+                <div class="card" onclick="scrollToSection('#addons')">
+                    <i class="fas fa-plug"></i>
+                    <h3>Blender Add-ons</h3>
+                    <p>Productivity boosters and workflow enhancers</p>
+                </div>
+                <div class="card" onclick="scrollToSection('#youtube')">
+                    <i class="fab fa-youtube"></i>
+                    <h3>Tutorials & Demos</h3>
+                    <p>Learn 3D modeling and Blender tips</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Vertex PCMT. Hosted on <a href="https://pages.github.com" style="color: #60a5fa;">GitHub Pages</a></p>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.youtube.com/@Vertex_PCMT" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/vertexpcmt" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:contact@vertexpcmt.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2024 Vertex PCMT. All 3D models & add-ons crafted with ❤️</p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scroll
+        function scrollToSection(target) {
+            document.querySelector(target).scrollIntoView({behavior:'smooth'});
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // YouTube button analytics (optional)
+        document.querySelectorAll('a[href*="youtube"]').forEach(link => {
+            link.addEventListener('click', () => {
+                gtag?.('event', 'youtube_click', {'channel': 'Vertex_PCMT'});
+            });
+        });
+    </script>
 </body>
 </html>
