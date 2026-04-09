@@ -3,29 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Awesome Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Vertex PCMT - Your Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <h1>🚀 Your Name</h1>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>🌐 Vertex PCMT</h1>
+        <p>Your Digital Presence</p>
     </header>
 
-    <section id="home">
-        <h2>Welcome to My Website!</h2>
-        <p>Made with ❤️ using GitHub Pages</p>
-    </section>
+    <div class="container">
+        <section class="hero">
+            <h1>Welcome to Vertex PCMT</h1>
+            <p>Professional website powered by GitHub Pages</p>
+            <button style="background: #3b82f6; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer;">
+                Get Started
+            </button>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>🎨 Modern Design</h3>
+                <p>Responsive design that looks great on all devices</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Fast Loading</h3>
+                <p>Optimized for speed with GitHub Pages CDN</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔧 Easy Updates</h3>
+                <p>Edit files on GitHub, see changes instantly</p>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2024 Your Name. Hosted on GitHub Pages.</p>
+        <p>&copy; 2024 Vertex PCMT. Hosted on <a href="https://pages.github.com" style="color: #60a5fa;">GitHub Pages</a></p>
     </footer>
 </body>
 </html>
