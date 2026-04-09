@@ -11,10 +11,40 @@
         body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#0c0c1a 0%,#1a1a2e 100%);color:#fff;overflow-x:hidden;}
         
         /* Navigation */
-        nav{position:fixed;top:0;width:100%;background:rgba(26,26,46,0.95);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;}
-        .nav-container{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
-        .logo{font-size:1.8rem;font-weight:800;background:linear-gradient(45deg,var(--primary),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-        /* Hero */
+        <!-- Navigation - RIGHT SIDE BUTTONS -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-cube"></i> VERTEX PCMT
+        </div>
+        <div style="display:flex;align-items:center;gap:1.5rem;">
+            <a href="#store" style="color:#fff;text-decoration:none;font-weight:500;transition:all 0.3s;">Store</a>
+            <a href="https://www.youtube.com/@Vertex_PCMT" target="_blank" style="color:#fff;text-decoration:none;font-weight:500;transition:all 0.3s;">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="login.html" class="login-btn" style="
+                background:linear-gradient(45deg,#00d4ff,#00aaff); 
+                color:#fff; 
+                padding:10px 22px; 
+                border-radius:20px; 
+                font-weight:600; 
+                text-decoration:none; 
+                font-size:0.9rem;
+                transition:all 0.3s;
+            ">🔐 Log in</a>
+            <a href="register.html" class="register-btn" style="
+                background:linear-gradient(45deg,#ff6b6b,#ff5252); 
+                color:#fff; 
+                padding:10px 22px; 
+                border-radius:20px; 
+                font-weight:600; 
+                text-decoration:none; 
+                font-size:0.9rem;
+                transition:all 0.3s;
+            ">📝 Sign Up</a>
+        </div>
+    </div>
+</nav>
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 2rem;background:radial-gradient(circle at 30% 20%,rgba(0,212,255,0.4),transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,107,107,0.3),transparent 50%),linear-gradient(135deg,#0c0c1a 0%,#1a1a2e 100%);}
         .hero h1{font-size:clamp(3.5rem,8vw,7rem);font-weight:900;margin-bottom:1.5rem;background:linear-gradient(45deg,var(--primary),#fff,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
         .hero p{font-size:1.4rem;margin-bottom:3rem;opacity:0.95;max-width:600px;}
