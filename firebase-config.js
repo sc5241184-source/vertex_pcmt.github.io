@@ -1,29 +1,24 @@
-// firebase-config.js - ✅ FULLY WORKING VERSION
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+<script type="module">
+  // 🔥 YOUR FIREBASE CONFIG HERE
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD9X...",  // Your keys (keep these!)
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef123456"
-};
+  const firebaseConfig = {
+    // ← PASTE YOUR CONFIG HERE ↓
+    apiKey: "YOUR_API_KEY",
+    authDomain: "vertex-pcmt.firebaseapp.com",
+    projectId: "vertex-pcmt",
+    storageBucket: "vertex-pcmt.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "YOUR_APP_ID"
+  };
 
-const app = initializeApp(firebaseConfig);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-
-// ✅ FIX #1: Add Google Provider
-export const googleProvider = new GoogleAuthProvider();
-
-// ✅ FIX #2: Configure for no "constructor" error
-googleProvider.setCustomParameters({
-  prompt: 'select_account'
-});
-
-// ✅ FIX #3: Optional - Language support
-googleProvider.useDeviceLanguage();
+  // Make auth global
+  window.auth = auth;
+  window.googleProvider = googleProvider;
+</script>
